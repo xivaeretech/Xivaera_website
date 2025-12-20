@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Xivaera Technologies</title>
-    <meta name="description" content="Get in touch with Xivaera Technologies. Contact us for web development, mobile apps, and digital solutions. Free consultation available.">
-    
+    <meta name="description"
+        content="Get in touch with Xivaera Technologies. Contact us for web development, mobile apps, and digital solutions. Free consultation available.">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -43,6 +46,7 @@
         }
     </script>
 </head>
+
 <body class="font-inter bg-white">
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
@@ -50,30 +54,33 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center space-x-2">
-                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">X</span>
+                        <div class="w-40 h-40 rounded-lg flex items-center justify-center">
+                            <img src="./assets/img/logo.png" alt="logo">
                         </div>
-                        <span class="text-2xl font-bold text-gray-900">Xivaera</span>
-                        <span class="text-sm text-gray-600">Technologies</span>
+
                     </a>
                 </div>
-                
+
+
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">Home</a>
                         <a href="about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
                         <a href="services.html" class="text-gray-600 hover:text-primary transition-colors">Services</a>
-                        <a href="portfolio.html" class="text-gray-600 hover:text-primary transition-colors">Portfolio</a>
-                        <a href="contact.html" class="text-primary font-medium hover:text-primary-dark transition-colors">Contact</a>
+                        <a href="portfolio.html"
+                            class="text-gray-600 hover:text-primary transition-colors">Portfolio</a>
+                        <a href="contact.html"
+                            class="text-primary font-medium hover:text-primary-dark transition-colors">Contact</a>
                     </div>
                 </div>
-                
+
                 <div class="hidden md:block">
-                    <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">
+                    <a href="contact.html"
+                        class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">
                         Get Started
                     </a>
                 </div>
-                
+
                 <div class="md:hidden">
                     <button class="mobile-menu-btn text-gray-600 hover:text-primary">
                         <i class="fas fa-bars text-xl"></i>
@@ -81,7 +88,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile Menu -->
         <div class="mobile-menu hidden md:hidden bg-white border-t">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -102,7 +109,8 @@
                     Get in <span class="text-primary">Touch</span>
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Ready to transform your business with innovative digital solutions? Let's discuss your project today.
+                    Ready to transform your business with innovative digital solutions? Let's discuss your project
+                    today.
                 </p>
             </div>
         </div>
@@ -116,53 +124,58 @@
                 <div data-aos="fade-right">
                     <h2 class="text-3xl font-bold text-gray-900 mb-6">Send us a Message</h2>
                     <p class="text-gray-600 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
-                    
+
                     <form id="contact-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="relative">
-                                <input type="text" id="firstName" name="firstName" required 
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="firstName" class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
+                                <input type="text" id="firstName" name="firstName" required
+                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <label for="firstName"
+                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
                                     First Name *
                                 </label>
                             </div>
                             <div class="relative">
                                 <input type="text" id="lastName" name="lastName" required
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="lastName" class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
+                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <label for="lastName"
+                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
                                     Last Name *
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="relative">
                                 <input type="email" id="email" name="email" required
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="email" class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
+                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <label for="email"
+                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
                                     Email Address *
                                 </label>
                             </div>
                             <div class="relative">
                                 <input type="tel" id="phone" name="phone"
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="phone" class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
+                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <label for="phone"
+                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
                                     Phone Number
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="relative">
                             <input type="text" id="company" name="company"
-                                   class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <label for="company" class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <label for="company"
+                                class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
                                 Company Name
                             </label>
                         </div>
-                        
+
                         <div class="relative">
                             <select id="service" name="service" required
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                                 <option value="">Select a Service *</option>
                                 <option value="web-development">Web Development</option>
                                 <option value="mobile-apps">Mobile App Development</option>
@@ -173,16 +186,16 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        
+
                         <div class="relative">
                             <textarea id="message" name="message" rows="6" required
-                                      class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                                      placeholder="Tell us about your project and requirements..."></textarea>
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                                placeholder="Tell us about your project and requirements..."></textarea>
                         </div>
-                        
+
                         <div class="relative">
                             <select id="budget" name="budget" required
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                                 <option value="">Project Budget Range *</option>
                                 <option value="under-10k">Under $10,000</option>
                                 <option value="10k-25k">$10,000 - $25,000</option>
@@ -192,19 +205,20 @@
                                 <option value="not-sure">Not Sure</option>
                             </select>
                         </div>
-                        
-                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 btn-animated">
+
+                        <button type="submit"
+                            class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 btn-animated">
                             Send Message
                             <i class="fas fa-paper-plane ml-2"></i>
                         </button>
                     </form>
                 </div>
-                
+
                 <!-- Contact Information -->
                 <div data-aos="fade-left">
                     <h2 class="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
                     <p class="text-gray-600 mb-8">Reach out to us through any of these channels. We're here to help!</p>
-                    
+
                     <div class="space-y-8">
                         <div class="flex items-start space-x-4">
                             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
@@ -212,10 +226,10 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900 mb-2">Office Address</h3>
-                                <p class="text-gray-600">49 Hamlet Drive<br>Colchester, CO4 3SR<br>United Kingdom</p>
+                                <p class="text-gray-600">Suite 6837 Unit 3a,<br>34-35, Hatton Garden, <br>London,England, EC1N 8DX</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start space-x-4">
                             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-phone text-white"></i>
@@ -225,45 +239,52 @@
                                 <p class="text-gray-600">Mobile: +44 (775) 675-7276<br>Mobile: +44 (739) 306-2198</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start space-x-4">
                             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-envelope text-white"></i>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900 mb-2">Email Addresses</h3>
-                                <p class="text-gray-600">General: info.xivaera@gmail.com<br>Support:  info.xivaera@gmail.com<br>Sales: sales@xivaera.com</p>
+                                <p class="text-gray-600">General: info.xivaera@gmail.com<br>Support:
+                                    info.xivaera@gmail.com<br>Sales: sales@xivaera.com</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start space-x-4">
                             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-clock text-white"></i>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900 mb-2">Business Hours</h3>
-                                <p class="text-gray-600">Monday - Friday: 10:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                                <p class="text-gray-600">Monday - Friday: 10:00 AM - 6:00 PM<br>Saturday: 10:00 AM -
+                                    4:00 PM<br>Sunday: Closed</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Social Media -->
                     <div class="mt-12">
                         <h3 class="font-semibold text-gray-900 mb-4">Follow Us</h3>
                         <div class="flex space-x-4">
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
                                 <i class="fab fa-linkedin text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
                                 <i class="fab fa-twitter text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
                                 <i class="fab fa-facebook text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
                                 <i class="fab fa-instagram text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
@@ -280,15 +301,16 @@
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Find Our Office</h2>
                 <p class="text-gray-600">Visit us at our headquarters at Colchester</p>
             </div>
-            
+
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up">
                 <div class="h-96 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
                     <div class="text-center text-white">
                         <i class="fas fa-map-marker-alt text-6xl mb-4 opacity-20"></i>
                         <h3 class="text-2xl font-bold mb-2">Interactive Map</h3>
-                        <p class="text-lg opacity-90">49 Hamlet Drive, Colchester</p>
+                        <p class="text-lg opacity-90">Suite 6837, Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
                         <div class="mt-6">
-                            <a href="https://maps.google.com" target="_blank" class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-all inline-block">
+                            <a href="https://www.google.com/maps?ll=51.520032,-0.108125&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=14204225801665394951" target="_blank"
+                                class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-all inline-block">
                                 <i class="fas fa-external-link-alt mr-2"></i>
                                 Open in Google Maps
                             </a>
@@ -306,7 +328,7 @@
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
                 <p class="text-gray-600">Common questions about working with Xivaera Technologies</p>
             </div>
-            
+
             <div class="space-y-6">
                 <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                     <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
@@ -316,10 +338,12 @@
                         </div>
                     </button>
                     <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Project timelines vary depending on complexity and scope. A simple website typically takes 2-4 weeks, while complex web applications or mobile apps can take 2-6 months. We provide detailed project timelines during our initial consultation.</p>
+                        <p class="text-gray-600">Project timelines vary depending on complexity and scope. A simple
+                            website typically takes 2-4 weeks, while complex web applications or mobile apps can take
+                            2-6 months. We provide detailed project timelines during our initial consultation.</p>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                     <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex items-center justify-between">
@@ -328,22 +352,28 @@
                         </div>
                     </button>
                     <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">We specialize in modern web technologies including Angular, React, JavaScript, Node.js, MongoDB, and Supabase. For mobile development, we use React Native, Flutter, and FlutterFlow. We also work with cloud platforms like AWS,GCP and implement modern CSS frameworks like Tailwind.</p>
+                        <p class="text-gray-600">We specialize in modern web technologies including Angular, React,
+                            JavaScript, Node.js, MongoDB, and Supabase. For mobile development, we use React Native,
+                            Flutter, and FlutterFlow. We also work with cloud platforms like AWS,GCP and implement
+                            modern CSS frameworks like Tailwind.</p>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
                     <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing support and maintenance?</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing support and
+                                maintenance?</h3>
                             <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
                         </div>
                     </button>
                     <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Yes, we offer comprehensive support and maintenance packages. This includes regular updates, security patches, performance monitoring, and technical support. We provide different tiers of support to match your specific needs and budget.</p>
+                        <p class="text-gray-600">Yes, we offer comprehensive support and maintenance packages. This
+                            includes regular updates, security patches, performance monitoring, and technical support.
+                            We provide different tiers of support to match your specific needs and budget.</p>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
                     <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex items-center justify-between">
@@ -352,10 +382,13 @@
                         </div>
                     </button>
                     <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Our process includes four main phases: Discovery (understanding your needs), Planning (creating detailed specifications), Development (building your solution using agile methodology), and Launch (testing, deployment, and support). We maintain clear communication throughout each phase.</p>
+                        <p class="text-gray-600">Our process includes four main phases: Discovery (understanding your
+                            needs), Planning (creating detailed specifications), Development (building your solution
+                            using agile methodology), and Launch (testing, deployment, and support). We maintain clear
+                            communication throughout each phase.</p>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="500">
                     <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex items-center justify-between">
@@ -364,7 +397,9 @@
                         </div>
                     </button>
                     <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Absolutely! We have extensive experience integrating with existing systems, migrating legacy applications, and enhancing current platforms. We carefully analyze your existing infrastructure and provide seamless integration solutions.</p>
+                        <p class="text-gray-600">Absolutely! We have extensive experience integrating with existing
+                            systems, migrating legacy applications, and enhancing current platforms. We carefully
+                            analyze your existing infrastructure and provide seamless integration solutions.</p>
                     </div>
                 </div>
             </div>
@@ -377,7 +412,8 @@
             <div data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
                 <p class="text-xl text-white/90 mb-8">Let's schedule a free consultation to discuss your project</p>
-                <a href="#contact-form" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 inline-block">
+                <a href="#contact-form"
+                    class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 inline-block">
                     Schedule Free Consultation
                 </a>
             </div>
@@ -390,13 +426,10 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">X</span>
+                        <div class="w-20 h-20 rounded-lg flex items-center justify-center">
+                            <img src="./assets/img/logo.png" alt="logo">
                         </div>
-                        <div>
-                            <span class="text-2xl font-bold">Xivaera</span>
-                            <div class="text-sm text-gray-400">Technologies</div>
-                        </div>
+
                     </div>
                     <p class="text-gray-400 mb-4">Innovative digital solutions for modern businesses.</p>
                     <div class="flex space-x-4">
@@ -406,7 +439,7 @@
                         <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Services</h3>
                     <ul class="space-y-2 text-gray-400">
@@ -416,7 +449,7 @@
                         <li><a href="services.html" class="hover:text-primary">UI/UX Design</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Company</h3>
                     <ul class="space-y-2 text-gray-400">
@@ -425,32 +458,31 @@
                         <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div>
+   <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
                     <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-envelope mr-2"></i>info.xivaera@gmail.com</p>
-                        <p><i class="fas fa-phone mr-2"></i> +44 (739) 306-2198</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>49 Hamlet Drive, Colchester</p>
+                        <p><i class="fas fa-envelope mr-2"></i>info@xivaera.com</p>
+                        <p><i class="fas fa-phone mr-2"></i>+44 7393062198</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Suite 6837 Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Xivaera Technologies. All rights reserved.</p>
+                <p>&copy; 2025 Xivaera Technologies. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Custom JavaScript -->
     <script src="assets/js/main.js"></script>
-    
+
     <!-- FAQ Toggle Script -->
     <script>
         function toggleFAQ(button) {
             const content = button.nextElementSibling;
             const icon = button.querySelector('i');
-            
+
             if (content.classList.contains('hidden')) {
                 content.classList.remove('hidden');
                 icon.style.transform = 'rotate(180deg)';
@@ -461,17 +493,17 @@
         }
 
         // Enhanced form handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-            
+
             // Validate required fields
             const requiredFields = ['firstName', 'lastName', 'email', 'service', 'message', 'budget'];
             let isValid = true;
-            
+
             requiredFields.forEach(field => {
                 const input = document.getElementById(field);
                 if (!data[field] || data[field].trim() === '') {
@@ -481,23 +513,23 @@
                     input.classList.remove('border-red-500');
                 }
             });
-            
+
             if (!isValid) {
                 alert('Please fill in all required fields.');
                 return;
             }
-            
+
             // Simulate form submission
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
             submitBtn.disabled = true;
-            
+
             setTimeout(() => {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
                 this.reset();
-                
+
                 // Show success message
                 const successMessage = document.createElement('div');
                 successMessage.className = 'fixed top-4 right-4 bg-primary text-white p-6 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
@@ -513,20 +545,21 @@
                         </button>
                     </div>
                 `;
-                
+
                 document.body.appendChild(successMessage);
-                
+
                 setTimeout(() => {
                     successMessage.style.transform = 'translateX(0)';
                 }, 100);
-                
+
                 setTimeout(() => {
                     successMessage.style.transform = 'translateX(100%)';
                     setTimeout(() => successMessage.remove(), 300);
                 }, 5000);
-                
+
             }, 2000);
         });
     </script>
 </body>
+
 </html>
