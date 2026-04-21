@@ -14,7 +14,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigation Animations */
+/* ─── Navigation ─────────────────────────────────────────── */
 .nav-link {
     position: relative;
     overflow: hidden;
@@ -35,86 +35,17 @@ body {
     width: 100%;
 }
 
-/* Tech Cards Animation */
+/* ─── Cards ──────────────────────────────────────────────── */
 .tech-card {
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .tech-card:hover {
     transform: translateY(-5px) scale(1.05);
 }
 
-/* Gradient Text Animation */
-.gradient-text {
-    background: linear-gradient(-45deg, var(--primary), var(--primary-light), var(--primary-dark), var(--primary));
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 4s ease infinite;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Floating Animation */
-.float-animation {
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
-}
-
-/* Pulse Animation */
-.pulse-animation {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .5; }
-}
-
-/* Slide In Animations */
-.slide-in-left {
-    animation: slideInLeft 0.8s ease-out;
-}
-
-.slide-in-right {
-    animation: slideInRight 0.8s ease-out;
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Card Hover Effects */
 .service-card {
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -139,7 +70,54 @@ body {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Button Animations */
+/* ─── Animations ─────────────────────────────────────────── */
+.gradient-text {
+    background: linear-gradient(-45deg, var(--primary), var(--primary-light), var(--primary-dark), var(--primary));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-20px); }
+}
+
+.pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+}
+
+.slide-in-left  { animation: slideInLeft  0.8s ease-out; }
+.slide-in-right { animation: slideInRight 0.8s ease-out; }
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Buttons ────────────────────────────────────────────── */
 .btn-animated {
     position: relative;
     overflow: hidden;
@@ -161,25 +139,7 @@ body {
     left: 100%;
 }
 
-/* Typing Animation */
-.typing-animation {
-    border-right: 2px solid var(--primary);
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--primary) }
-}
-
-/* Progress Bar Animation */
+/* ─── Progress Bar ───────────────────────────────────────── */
 .progress-bar {
     position: relative;
     background: #e5e7eb;
@@ -198,30 +158,23 @@ body {
 .progress-fill::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
     background-image: linear-gradient(
         -45deg,
-        rgba(255, 255, 255, 0.2) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.2) 50%,
-        rgba(255, 255, 255, 0.2) 75%,
-        transparent 75%,
-        transparent
+        rgba(255,255,255,0.2) 25%, transparent 25%,
+        transparent 50%, rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0.2) 75%, transparent 75%
     );
     background-size: 50px 50px;
     animation: move 2s linear infinite;
 }
 
 @keyframes move {
-    0% { background-position: 0 0; }
-    100% { background-position: 50px 50px; }
+    from { background-position: 0 0; }
+    to   { background-position: 50px 50px; }
 }
 
-/* Parallax Effect */
+/* ─── Misc ───────────────────────────────────────────────── */
 .parallax {
     background-attachment: fixed;
     background-position: center;
@@ -229,7 +182,6 @@ body {
     background-size: cover;
 }
 
-/* Glowing Effect */
 .glow {
     box-shadow: 0 0 20px rgba(107, 183, 104, 0.3);
     transition: box-shadow 0.3s ease;
@@ -239,7 +191,6 @@ body {
     box-shadow: 0 0 30px rgba(107, 183, 104, 0.5);
 }
 
-/* Loading Animation */
 .loading-spinner {
     width: 40px;
     height: 40px;
@@ -250,40 +201,9 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Form Animations */
-.form-input {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.form-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(107, 183, 104, 0.1);
-    outline: none;
-}
-
-.form-input:focus + label {
-    color: var(--primary);
-    transform: translateY(-25px) scale(0.9);
-}
-
-/* Mobile Menu Animation */
-.mobile-menu {
-    transition: all 0.3s ease;
-    transform: translateY(-10px);
-    opacity: 0;
-}
-
-.mobile-menu.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Section Dividers */
 .section-divider {
     position: relative;
     height: 1px;
@@ -303,33 +223,79 @@ body {
     border-radius: 50%;
 }
 
-/* Responsive Design */
+/* ─── Mobile Menu ────────────────────────────────────────── */
+.mobile-menu {
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+.mobile-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ─── Forms ──────────────────────────────────────────────── */
+.form-input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 183, 104, 0.15);
+    outline: none;
+}
+
+/* Floating label — moves up when field is focused or filled */
+.form-input:focus + label,
+.form-input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 12px;
+    font-size: 12px;
+    color: var(--primary);
+    background: #ffffff;
+    padding: 0 4px;
+}
+
+/* Select dropdowns */
+select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+}
+
+/* Floating label for selects (always visible at top) */
+.floating-label {
+    top: -10px;
+    font-size: 12px;
+    color: var(--primary);
+    background: #ffffff;
+    padding: 0 4px;
+}
+
+/* Error state */
+.form-input.border-red-500 {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 768px) {
     .tech-card {
         margin-bottom: 1rem;
     }
-    
+
     .service-card:hover {
         transform: none;
     }
-    
+
     .parallax {
         background-attachment: scroll;
-    }
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    .bg-white {
-        background-color: #1f2937 !important;
-        color: white;
-    }
-    
-    .text-gray-900 {
-        color: #f9fafb !important;
-    }
-    
-    .text-gray-600 {
-        color: #d1d5db !important;
     }
 }
