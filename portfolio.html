@@ -3,316 +3,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Xivaera Technologies</title>
-    <meta name="description" content="Explore our portfolio of successful projects including web applications, mobile apps, and innovative digital solutions.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Font Awesome -->
+    <title>Portfolio — Xivaera Technologies</title>
+    <meta name="description" content="Explore our portfolio of web applications, mobile apps, and digital solutions built by Xivaera Technologies.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6bb768',
-                        'primary-dark': '#5ba05a',
-                        'primary-light': '#7fc77c'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
+
+    <style>
+        .hero {
+            padding: 140px 32px 72px;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.05;
+            color: var(--ink);
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            color: var(--green);
+            font-style: italic;
+        }
+
+        .hero-sub {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .filter-section {
+            padding: 0 0 36px;
+        }
+
+        .filter-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-btn {
+            border: 1px solid rgba(107,183,104,0.15);
+            background: var(--white);
+            color: var(--ink-soft);
+            padding: 12px 20px;
+            border-radius: 100px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--ink);
+            color: white;
+            border-color: var(--ink);
+        }
+
+        .portfolio-section {
+            padding: 0 0 100px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 22px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-visual {
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .project-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.16);
+            transition: background 0.25s;
+        }
+
+        .project-card:hover .project-visual::after {
+            background: rgba(0,0,0,0.08);
+        }
+
+        .project-visual-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-visual i {
+            font-size: 3.7rem;
+            margin-bottom: 14px;
+            opacity: 0.25;
+        }
+
+        .project-visual h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 6px;
+        }
+
+        .project-visual p {
+            font-size: 1rem;
+            opacity: 0.92;
+        }
+
+        .project-body {
+            padding: 26px;
+        }
+
+        .project-body h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .project-body > p {
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .project-tag {
+            background: var(--green-muted);
+            color: var(--green-dark);
+            border: 1px solid rgba(107,183,104,0.18);
+            padding: 7px 11px;
+            border-radius: 100px;
+            font-size: 0.76rem;
+            font-weight: 600;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding-top: 18px;
+            border-top: 1px solid #eef2eb;
+        }
+
+        .project-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+        }
+
+        .project-link {
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .stats-section {
+            background: var(--ink);
+            padding: 100px 0;
+        }
+
+        .stats-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .stats-head .section-heading {
+            color: white;
+        }
+
+        .stats-head .section-sub {
+            color: rgba(255,255,255,0.55);
+            margin: 0 auto;
+        }
+
+        .stats-head .section-tag {
+            background: rgba(107,183,104,0.15);
+            border-color: rgba(107,183,104,0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 34px 20px;
+        }
+
+        .stat-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .stat-card p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+        }
+
+        .testimonials-section {
+            padding: 100px 0;
+        }
+
+        .testimonials-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .testimonials-head .section-sub {
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 16px;
+        }
+
+        .stars i {
+            color: var(--green);
+            font-size: 0.8rem;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.92rem;
+            color: var(--ink-mid);
+            line-height: 1.75;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--green-muted);
+            border: 2px solid rgba(107,183,104,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.95rem;
+            color: var(--green-dark);
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .author-info p {
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+        }
+
+        .cta-section {
+            background: var(--white);
+            padding: 100px 32px;
+        }
+
+        .cta-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-inner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-inner h2 em {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .cta-inner p {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            margin-bottom: 36px;
+            line-height: 1.75;
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
-    </script>
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .portfolio-grid,
+            .stats-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
-<body class="font-inter bg-white">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                     <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <div class="w-40 h-40 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
-                      
-                    </a>
-                </div>
-                
-                
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-                        <a href="about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
-                        <a href="services.html" class="text-gray-600 hover:text-primary transition-colors">Services</a>
-                        <a href="portfolio.html" class="text-primary font-medium hover:text-primary-dark transition-colors">Portfolio</a>
-                        <a href="contact.html" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
-                    </div>
-                </div>
-                
-                <div class="hidden md:block">
-                    <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">
-                        Get Started
-                    </a>
-                </div>
-                
-                <div class="md:hidden">
-                    <button class="mobile-menu-btn text-gray-600 hover:text-primary">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
-                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Services</a>
-                <a href="portfolio.html" class="block px-3 py-2 text-primary font-medium">Portfolio</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
-            </div>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html">
+                <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:62px;width:auto;display:block;">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+
+            <button class="mob-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-24 pb-12 bg-gradient-to-br from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center" data-aos="fade-up">
-                <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    Our <span class="text-primary">Portfolio</span>
-                </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Showcasing our successful projects and innovative solutions
-                </p>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner fade-up">
+            <div class="hero-tag">Our work</div>
+            <h1>Projects built with <em>purpose</em></h1>
+            <p class="hero-sub">A selection of digital products we’ve designed and developed across web, mobile, and cloud — each one shaped around real business goals.</p>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="section-wrap">
+            <div class="filter-row fade-up">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="cloud">Cloud Solutions</button>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Filter -->
-    <section class="py-8 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
-                <button class="filter-btn active bg-primary text-white px-6 py-2 rounded-full font-medium transition-all" data-filter="all">
-                    All Projects
-                </button>
-                <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-all" data-filter="web">
-                    Web Development
-                </button>
-                <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-all" data-filter="mobile">
-                    Mobile Apps
-                </button>
-                <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-all" data-filter="cloud">
-                    Cloud Solutions
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Grid -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
-                <!-- E-Commerce Platform -->
-                <div class="portfolio-item web" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                        <div class="h-64 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-white">
-                                <i class="fas fa-shopping-cart text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity"></i>
-                                <h3 class="text-2xl font-bold">E-Commerce Platform</h3>
-                                <p class="text-lg opacity-90">Modern Online Store</p>
+    <section class="portfolio-section">
+        <div class="section-wrap">
+            <div class="portfolio-grid" id="portfolio-grid">
+                <div class="portfolio-item web fade-up delay-1">
+                    <div class="project-card">
+                        <div class="project-visual" style="background:linear-gradient(135deg, #6bb768, #a8d9a5);">
+                            <div class="project-visual-content">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h3>E-Commerce Platform</h3>
+                                <p>Modern Online Store</p>
                             </div>
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Advanced E-Commerce Solution</h3>
-                            <p class="text-gray-600 mb-4">Full-featured online shopping platform with inventory management, payment integration, and analytics.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">React</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Node.js</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">MongoDB</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Stripe</span>
+                        <div class="project-body">
+                            <h3>Advanced E-Commerce Solution</h3>
+                            <p>Full-featured online shopping platform with inventory management, payment integration, and analytics.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">MongoDB</span>
+                                <span class="project-tag">Stripe</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span><i class="fas fa-calendar mr-1"></i>2025</span>
-                                    <span><i class="fas fa-tag mr-1"></i>E-Commerce</span>
+                            <div class="project-meta">
+                                <div class="project-info">
+                                    <span><i class="fas fa-calendar"></i> 2025</span>
+                                    <span><i class="fas fa-tag"></i> E-Commerce</span>
                                 </div>
-                                <button class="text-primary hover:text-primary-dark font-semibold">View Details →</button>
+                                <button class="project-link">View Details →</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mobile Banking App -->
-                <div class="portfolio-item mobile" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                        <div class="h-64 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-white">
-                                <i class="fas fa-mobile-alt text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity"></i>
-                                <h3 class="text-2xl font-bold">Banking App</h3>
-                                <p class="text-lg opacity-90">Secure Mobile Banking</p>
+                <div class="portfolio-item mobile fade-up delay-2">
+                    <div class="project-card">
+                        <div class="project-visual" style="background:linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <div class="project-visual-content">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>Banking App</h3>
+                                <p>Secure Mobile Banking</p>
                             </div>
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Banking Application</h3>
-                            <p class="text-gray-600 mb-4">Secure and user-friendly banking app with biometric authentication and real-time transactions.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Flutter</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Firebase</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Biometrics</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Push Notifications</span>
+                        <div class="project-body">
+                            <h3>Mobile Banking Application</h3>
+                            <p>Secure and user-friendly banking app with biometric authentication and real-time transactions.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Flutter</span>
+                                <span class="project-tag">Firebase</span>
+                                <span class="project-tag">Biometrics</span>
+                                <span class="project-tag">Push Notifications</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span><i class="fas fa-calendar mr-1"></i>2025</span>
-                                    <span><i class="fas fa-tag mr-1"></i>FinTech</span>
+                            <div class="project-meta">
+                                <div class="project-info">
+                                    <span><i class="fas fa-calendar"></i> 2025</span>
+                                    <span><i class="fas fa-tag"></i> FinTech</span>
                                 </div>
-                                <button class="text-primary hover:text-primary-dark font-semibold">View Details →</button>
+                                <button class="project-link">View Details →</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Healthcare Dashboard -->
-                <div class="portfolio-item web cloud" data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                        <div class="h-64 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-white">
-                                <i class="fas fa-heartbeat text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity"></i>
-                                <h3 class="text-2xl font-bold">Healthcare Dashboard</h3>
-                                <p class="text-lg opacity-90">Patient Management System</p>
+                <div class="portfolio-item web cloud fade-up delay-3">
+                    <div class="project-card">
+                        <div class="project-visual" style="background:linear-gradient(135deg, #22c55e, #16a34a);">
+                            <div class="project-visual-content">
+                                <i class="fas fa-heartbeat"></i>
+                                <h3>Healthcare Dashboard</h3>
+                                <p>Patient Management System</p>
                             </div>
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Healthcare Management Platform</h3>
-                            <p class="text-gray-600 mb-4">Comprehensive patient management system with appointment scheduling and medical records.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Angular</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Supabase</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Charts.js</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Security</span>
+                        <div class="project-body">
+                            <h3>Healthcare Management Platform</h3>
+                            <p>Comprehensive patient management system with appointment scheduling and medical records.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Angular</span>
+                                <span class="project-tag">Supabase</span>
+                                <span class="project-tag">Charts.js</span>
+                                <span class="project-tag">Security</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span><i class="fas fa-calendar mr-1"></i>2025</span>
-                                    <span><i class="fas fa-tag mr-1"></i>Healthcare</span>
+                            <div class="project-meta">
+                                <div class="project-info">
+                                    <span><i class="fas fa-calendar"></i> 2025</span>
+                                    <span><i class="fas fa-tag"></i> Healthcare</span>
                                 </div>
-                                <button class="text-primary hover:text-primary-dark font-semibold">View Details →</button>
+                                <button class="project-link">View Details →</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Food Delivery App -->
-                <div class="portfolio-item mobile" data-aos="fade-up" data-aos-delay="400">
-                    <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                        <div class="h-64 bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-white">
-                                <i class="fas fa-utensils text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity"></i>
-                                <h3 class="text-2xl font-bold">Food Delivery</h3>
-                                <p class="text-lg opacity-90">Restaurant Partner App</p>
+                <div class="portfolio-item mobile fade-up delay-1">
+                    <div class="project-card">
+                        <div class="project-visual" style="background:linear-gradient(135deg, #f97316, #ea580c);">
+                            <div class="project-visual-content">
+                                <i class="fas fa-utensils"></i>
+                                <h3>Food Delivery</h3>
+                                <p>Restaurant Partner App</p>
                             </div>
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Food Delivery Platform</h3>
-                            <p class="text-gray-600 mb-4">Multi-vendor food delivery app with real-time tracking and integrated payment system.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">React Native</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Maps API</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Real-time</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Payment Gateway</span>
+                        <div class="project-body">
+                            <h3>Food Delivery Platform</h3>
+                            <p>Multi-vendor food delivery app with real-time tracking and integrated payment system.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React Native</span>
+                                <span class="project-tag">Maps API</span>
+                                <span class="project-tag">Real-time</span>
+                                <span class="project-tag">Payment Gateway</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span><i class="fas fa-calendar mr-1"></i>2023</span>
-                                    <span><i class="fas fa-tag mr-1"></i>Food & Delivery</span>
+                            <div class="project-meta">
+                                <div class="project-info">
+                                    <span><i class="fas fa-calendar"></i> 2023</span>
+                                    <span><i class="fas fa-tag"></i> Food & Delivery</span>
                                 </div>
-                                <button class="text-primary hover:text-primary-dark font-semibold">View Details →</button>
+                                <button class="project-link">View Details →</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Real Estate Platform -->
-                <div class="portfolio-item web" data-aos="fade-up" data-aos-delay="500">
-                    <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                        <div class="h-64 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-white">
-                                <i class="fas fa-home text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity"></i>
-                                <h3 class="text-2xl font-bold">Real Estate Portal</h3>
-                                <p class="text-lg opacity-90">Property Management</p>
+                <div class="portfolio-item web fade-up delay-2">
+                    <div class="project-card">
+                        <div class="project-visual" style="background:linear-gradient(135deg, #a855f7, #7e22ce);">
+                            <div class="project-visual-content">
+                                <i class="fas fa-home"></i>
+                                <h3>Real Estate Portal</h3>
+                                <p>Property Management</p>
                             </div>
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Real Estate Management Portal</h3>
-                            <p class="text-gray-600 mb-4">Comprehensive property listing and management platform with advanced search and analytics.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Vue.js</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">MongoDB</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Search Engine</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Analytics</span>
+                        <div class="project-body">
+                            <h3>Real Estate Management Portal</h3>
+                            <p>Comprehensive property listing and management platform with advanced search and analytics.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Vue.js</span>
+                                <span class="project-tag">MongoDB</span>
+                                <span class="project-tag">Search Engine</span>
+                                <span class="project-tag">Analytics</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span><i class="fas fa-calendar mr-1"></i>2023</span>
-                                    <span><i class="fas fa-tag mr-1"></i>Real Estate</span>
+                            <div class="project-meta">
+                                <div class="project-info">
+                                    <span><i class="fas fa-calendar"></i> 2023</span>
+                                    <span><i class="fas fa-tag"></i> Real Estate</span>
                                 </div>
-                                <button class="text-primary hover:text-primary-dark font-semibold">View Details →</button>
+                                <button class="project-link">View Details →</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cloud Analytics Platform -->
-                <div class="portfolio-item cloud" data-aos="fade-up" data-aos-delay="600">
-                    <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                        <div class="h-64 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-white">
-                                <i class="fas fa-chart-line text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity"></i>
-                                <h3 class="text-2xl font-bold">Analytics Platform</h3>
-                                <p class="text-lg opacity-90">Business Intelligence</p>
+                <div class="portfolio-item cloud fade-up delay-3">
+                    <div class="project-card">
+                        <div class="project-visual" style="background:linear-gradient(135deg, #6366f1, #4338ca);">
+                            <div class="project-visual-content">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Analytics Platform</h3>
+                                <p>Business Intelligence</p>
                             </div>
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Analytics Platform</h3>
-                            <p class="text-gray-600 mb-4">Advanced business intelligence platform with real-time data processing and visualization.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">AWS</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Big Data</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Machine Learning</span>
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Visualization</span>
+                        <div class="project-body">
+                            <h3>Cloud Analytics Platform</h3>
+                            <p>Advanced business intelligence platform with real-time data processing and visualization.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">AWS</span>
+                                <span class="project-tag">Big Data</span>
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">Visualization</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span><i class="fas fa-calendar mr-1"></i>2023</span>
-                                    <span><i class="fas fa-tag mr-1"></i>Analytics</span>
+                            <div class="project-meta">
+                                <div class="project-info">
+                                    <span><i class="fas fa-calendar"></i> 2023</span>
+                                    <span><i class="fas fa-tag"></i> Analytics</span>
                                 </div>
-                                <button class="text-primary hover:text-primary-dark font-semibold">View Details →</button>
+                                <button class="project-link">View Details →</button>
                             </div>
                         </div>
                     </div>
@@ -321,109 +636,82 @@
         </div>
     </section>
 
-    <!-- Statistics Section -->
-    <section class="py-20 bg-primary">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-white mb-4">Project Success Statistics</h2>
-                <p class="text-xl text-white/90">Numbers that speak for our expertise</p>
+    <section class="stats-section">
+        <div class="section-wrap">
+            <div class="stats-head fade-up">
+                <div class="section-tag">Project impact</div>
+                <h2 class="section-heading">Numbers behind the <em>results</em></h2>
+                <p class="section-sub">A snapshot of the work we’ve delivered and the trust we’ve built with clients.</p>
             </div>
-            
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center text-white" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-5xl font-bold mb-2 counter" data-target="50">0</div>
-                    <p class="text-xl opacity-90">Projects Completed</p>
+
+            <div class="stats-grid">
+                <div class="stat-card fade-up delay-1">
+                    <h3><span class="counter" data-target="50"></span>+</h3>
+                    <p>Projects completed</p>
                 </div>
-                
-                <div class="text-center text-white" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-5xl font-bold mb-2 counter" data-target="25">0</div>
-                    <p class="text-xl opacity-90">Happy Clients</p>
+                <div class="stat-card fade-up delay-2">
+                    <h3><span class="counter" data-target="25"></span>+</h3>
+                    <p>Happy clients</p>
                 </div>
-                
-                <div class="text-center text-white" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-5xl font-bold mb-2 counter" data-target="98">0</div>
-                    <p class="text-xl opacity-90">% Success Rate</p>
+                <div class="stat-card fade-up delay-3">
+                    <h3><span class="counter" data-target="98"></span>%</h3>
+                    <p>Success rate</p>
                 </div>
-                
-                <div class="text-center text-white" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-5xl font-bold mb-2 counter" data-target="15">0</div>
-                    <p class="text-xl opacity-90">Technologies Used</p>
+                <div class="stat-card fade-up delay-4">
+                    <h3><span class="counter" data-target="15"></span>+</h3>
+                    <p>Technologies used</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
-                <p class="text-xl text-gray-600">What our clients say about working with us</p>
+    <section class="testimonials-section">
+        <div class="section-wrap">
+            <div class="testimonials-head fade-up">
+                <div class="section-tag">Client feedback</div>
+                <h2 class="section-heading">What clients say about our <em>work</em></h2>
+                <p class="section-sub">A few words from businesses we’ve partnered with across different industries.</p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center mb-6">
-                        <div class="flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up delay-1">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Xivaera Technologies delivered an exceptional e-commerce platform that exceeded our expectations. The team's attention to detail and technical expertise is outstanding."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
-                            <p class="text-gray-600 text-sm">CEO, RetailPlus</p>
+                    <blockquote>"Xivaera Technologies delivered an exceptional e-commerce platform that exceeded our expectations. The team's attention to detail and technical expertise was outstanding."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, RetailPlus</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center mb-6">
-                        <div class="flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+
+                <div class="testimonial-card fade-up delay-2">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"The mobile banking app they developed for us is secure, user-friendly, and has significantly improved our customer engagement. Highly recommended!"</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Michael Chen</h4>
-                            <p class="text-gray-600 text-sm">CTO, FinanceFirst Bank</p>
+                    <blockquote>"The mobile banking app they developed for us is secure, user-friendly, and has significantly improved our customer engagement."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>CTO, FinanceFirst Bank</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-center mb-6">
-                        <div class="flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+
+                <div class="testimonial-card fade-up delay-3">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Professional, reliable, and innovative. Xivaera Technologies transformed our healthcare management system and improved our operational efficiency dramatically."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Dr. Emily Rodriguez</h4>
-                            <p class="text-gray-600 text-sm">Director, HealthCare Plus</p>
+                    <blockquote>"Professional, reliable, and innovative. Xivaera Technologies transformed our healthcare system and improved our operational efficiency dramatically."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ER</div>
+                        <div class="author-info">
+                            <h4>Dr. Emily Rodriguez</h4>
+                            <p>Director, HealthCare Plus</p>
                         </div>
                     </div>
                 </div>
@@ -431,107 +719,77 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ready to Start Your Project?</h2>
-                <p class="text-xl text-gray-600 mb-8">Let's create something amazing together</p>
-                <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 inline-block">
-                    Start Your Project Today
-                </a>
-            </div>
+    <section class="cta-section">
+        <div class="cta-inner fade-up">
+            <h2>Ready to build something <em>amazing?</em></h2>
+            <p>Let’s talk about your idea and create a product that’s thoughtful, scalable, and built for real impact.</p>
+            <a href="contact.html" class="btn-primary">
+                Start your project today
+                <i class="fas fa-arrow-right" style="font-size:0.85rem"></i>
+            </a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                     <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-20 h-20 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
-                      
-                    </div>
-                    <p class="text-gray-400 mb-4">Innovative digital solutions for modern businesses.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.85">
+                    <p>Innovative digital solutions for modern businesses — from web and mobile to cloud and beyond.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="services.html" class="hover:text-primary">Web Development</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Mobile Apps</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Cloud Solutions</a></li>
-                        <li><a href="services.html" class="hover:text-primary">UI/UX Design</a></li>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">Cloud Solutions</a></li>
+                        <li><a href="services.html">UI/UX Design</a></li>
+                        <li><a href="services.html">E-Commerce</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="about.html" class="hover:text-primary">About Us</a></li>
-                        <li><a href="portfolio.html" class="hover:text-primary">Portfolio</a></li>
-                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-               <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-envelope mr-2"></i>info@xivaera.com</p>
-                        <p><i class="fas fa-phone mr-2"></i>+44 7393062198</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Suite 6837, Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
+
+                <div class="footer-col">
+                    <h4>Get in touch</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@xivaera.com">info@xivaera.com</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+447393062198">+44 7393 062198</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Suite 6837, Unit 3a, 34–35 Hatton Garden, London EC1N 8DX</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Xivaera Technologies. All rights reserved.</p>
+
+            <div class="footer-bottom">
+                <span style="color:rgba(255,255,255,0.25)">&copy; 2025 <span>Xivaera Technologies</span>. All rights reserved.</span>
+                <span>Built with care in London 🇬🇧</span>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
     <script src="assets/js/main.js"></script>
-    
-    <!-- Portfolio Filter Script -->
-    <script>
-        // Portfolio filtering functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filter = btn.getAttribute('data-filter');
-                    
-                    // Update active button
-                    filterBtns.forEach(b => {
-                        b.classList.remove('active', 'bg-primary', 'text-white');
-                        b.classList.add('bg-gray-200', 'text-gray-700');
-                    });
-                    btn.classList.add('active', 'bg-primary', 'text-white');
-                    btn.classList.remove('bg-gray-200', 'text-gray-700');
-                    
-                    // Filter portfolio items
-                    portfolioItems.forEach(item => {
-                        if (filter === 'all' || item.classList.contains(filter)) {
-                            item.style.display = 'block';
-                            item.style.animation = 'fadeInUp 0.5s ease-in-out';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
