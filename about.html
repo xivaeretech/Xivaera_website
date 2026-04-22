@@ -3,396 +3,728 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Xivaera Technologies</title>
-    <meta name="description" content="Learn about Xivaera Technologies - our mission, vision, values, and the expert team behind innovative digital solutions.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Font Awesome -->
+    <title>About Us — Xivaera Technologies</title>
+    <meta name="description" content="Learn about Xivaera Technologies — our mission, vision, values, and the expert team behind innovative digital solutions.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6bb768',
-                        'primary-dark': '#5ba05a',
-                        'primary-light': '#7fc77c'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
+
+    <style>
+        .hero {
+            padding: 140px 32px 80px;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.05;
+            color: var(--ink);
+            letter-spacing: -0.03em;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 em {
+            color: var(--green);
+            font-style: italic;
+        }
+
+        .hero-sub {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .story-section,
+        .foundation-section,
+        .team-section,
+        .skills-section {
+            padding: 100px 0;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .story-copy p {
+            font-size: 1rem;
+            color: var(--ink-soft);
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 40px;
+            margin-top: 34px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(107,183,104,0.15);
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--ink);
+            letter-spacing: -0.03em;
+        }
+
+        .stat-item h3 span {
+            color: var(--green);
+        }
+
+        .stat-item p {
+            margin-top: 4px;
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+
+        .story-panel {
+            position: relative;
+        }
+
+        .story-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.15);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .story-bg {
+            position: absolute;
+            inset: 14px;
+            background: linear-gradient(135deg, var(--green), var(--green-light));
+            border-radius: 20px;
+            opacity: 0.12;
+            z-index: 1;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .mini-card {
+            background: var(--cream);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 18px;
+            padding: 22px 18px;
+            text-align: center;
+        }
+
+        .mini-card i {
+            font-size: 1.8rem;
+            color: var(--green-dark);
+            margin-bottom: 12px;
+        }
+
+        .mini-card h3 {
+            font-size: 1rem;
+            color: var(--ink);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .mini-card p {
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+            line-height: 1.5;
+        }
+
+        .foundation-section {
+            background: var(--white);
+        }
+
+        .foundation-header,
+        .team-header,
+        .skills-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .foundation-header .section-sub,
+        .team-header .section-sub,
+        .skills-header .section-sub {
+            margin: 0 auto;
+        }
+
+        .foundation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .foundation-card {
+            background: var(--cream);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 20px;
+            padding: 36px 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .foundation-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .foundation-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: var(--green-muted);
+            border: 1px solid rgba(107,183,104,0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+        }
+
+        .foundation-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+            color: var(--ink);
+        }
+
+        .foundation-card p {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-avatar {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), var(--green-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .team-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.45rem;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            color: var(--green-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .team-card p {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            background: var(--cream);
+            border: 1px solid #e2e8de;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink-soft);
+            transition: all 0.2s;
+        }
+
+        .team-social a:hover {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        .skills-section {
+            background: var(--ink);
+        }
+
+        .skills-header .section-heading {
+            color: white;
+        }
+
+        .skills-header .section-sub {
+            color: rgba(255,255,255,0.55);
+        }
+
+        .skills-header .section-tag {
+            background: rgba(107,183,104,0.15);
+            border-color: rgba(107,183,104,0.3);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-group {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 30px 24px;
+        }
+
+        .skill-group h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: white;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-pill {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.82);
+            text-align: center;
+        }
+
+        .cta-section {
+            background: var(--cream);
+            padding: 100px 32px;
+        }
+
+        .cta-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-inner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-inner h2 em {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .cta-inner p {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            margin-bottom: 36px;
+            line-height: 1.75;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 1024px) {
+            .foundation-grid,
+            .team-grid,
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
-    </script>
+
+        @media (max-width: 900px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .foundation-grid,
+            .team-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+
+            .stats-row {
+                gap: 22px;
+            }
+        }
+    </style>
 </head>
-<body class="font-inter bg-white">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                        <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <div class="w-40 h-40 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
-                      
-                    </a>
-                </div>
-                
-                
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-                        <a href="about.html" class="text-primary font-medium hover:text-primary-dark transition-colors">About</a>
-                        <a href="services.html" class="text-gray-600 hover:text-primary transition-colors">Services</a>
-                        <a href="portfolio.html" class="text-gray-600 hover:text-primary transition-colors">Portfolio</a>
-                        <a href="contact.html" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
-                    </div>
-                </div>
-                
-                <div class="hidden md:block">
-                    <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">
-                        Get Started
-                    </a>
-                </div>
-                
-                <div class="md:hidden">
-                    <button class="mobile-menu-btn text-gray-600 hover:text-primary">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-primary font-medium">About</a>
-                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Services</a>
-                <a href="portfolio.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Portfolio</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
-            </div>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html">
+                <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:62px;width:auto;display:block;">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+
+            <button class="mob-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-24 pb-12 bg-gradient-to-br from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center" data-aos="fade-up">
-                <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    About <span class="text-primary">Xivaera Technologies</span>
-                </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Pioneering the future of digital innovation with cutting-edge solutions and exceptional expertise 
-                </p>
-            </div>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner fade-up">
+            <div class="hero-tag">Who we are</div>
+            <h1>About <em>Xivaera Technologies</em></h1>
+            <p class="hero-sub">We help businesses grow through thoughtful design, modern development, and scalable digital solutions built with care, clarity, and long-term vision.</p>
         </div>
     </section>
 
-    <!-- Company Story Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div data-aos="fade-right">
-                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Founded with a vision to transform businesses through innovative technology solutions, Xivaera Technologies has emerged as a leading development company specializing in modern web and mobile applications.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Our journey began with a simple belief: technology should empower businesses to achieve their full potential. Today, we continue to push boundaries, delivering exceptional digital experiences that drive growth and success for our clients.
-                    </p>
-                    <div class="flex items-center space-x-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary counter" data-target="50">0</div>
-                            <div class="text-gray-600">Projects Completed</div>
+    <section class="story-section">
+        <div class="section-wrap">
+            <div class="story-grid">
+                <div class="story-copy fade-up">
+                    <div class="section-tag">Our story</div>
+                    <h2 class="section-heading">Built on innovation, driven by <em>results</em></h2>
+                    <p>Founded with a vision to transform businesses through innovative technology solutions, Xivaera Technologies has grown into a trusted digital partner for modern brands seeking thoughtful web, mobile, and cloud products.</p>
+                    <p>Our journey began with a simple belief: technology should empower businesses to achieve their full potential. Today, we continue to build high-quality digital experiences that combine usability, performance, and long-term scalability.</p>
+
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <h3><span class="counter" data-target="50"></span><span>+</span></h3>
+                            <p>Projects completed</p>
                         </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary counter" data-target="25">0</div>
-                            <div class="text-gray-600">Happy Clients</div>
+                        <div class="stat-item">
+                            <h3><span class="counter" data-target="25"></span><span>+</span></h3>
+                            <p>Happy clients</p>
                         </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary counter" data-target="3">0</div>
-                            <div class="text-gray-600">Years Experience</div>
+                        <div class="stat-item">
+                            <h3><span class="counter" data-target="3"></span><span>+</span></h3>
+                            <p>Years experience</p>
                         </div>
                     </div>
                 </div>
-                
-                <div data-aos="fade-left" class="relative">
-                    <div class="relative z-10 bg-white p-8 rounded-2xl shadow-2xl">
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="text-center p-4 bg-gray-50 rounded-lg">
-                                <i class="fas fa-rocket text-3xl text-primary mb-3"></i>
-                                <h3 class="font-semibold text-gray-900">Innovation</h3>
-                                <p class="text-sm text-gray-600">Cutting-edge solutions</p>
+
+                <div class="story-panel fade-up delay-1">
+                    <div class="story-bg"></div>
+                    <div class="story-card">
+                        <div class="mini-grid">
+                            <div class="mini-card">
+                                <i class="fas fa-rocket"></i>
+                                <h3>Innovation</h3>
+                                <p>Cutting-edge solutions for modern businesses.</p>
                             </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-lg">
-                                <i class="fas fa-users text-3xl text-primary mb-3"></i>
-                                <h3 class="font-semibold text-gray-900">Collaboration</h3>
-                                <p class="text-sm text-gray-600">Team-driven approach</p>
+                            <div class="mini-card">
+                                <i class="fas fa-users"></i>
+                                <h3>Collaboration</h3>
+                                <p>A team-driven process built around partnership.</p>
                             </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-lg">
-                                <i class="fas fa-star text-3xl text-primary mb-3"></i>
-                                <h3 class="font-semibold text-gray-900">Excellence</h3>
-                                <p class="text-sm text-gray-600">Quality in every detail</p>
+                            <div class="mini-card">
+                                <i class="fas fa-star"></i>
+                                <h3>Excellence</h3>
+                                <p>Attention to quality in every detail we deliver.</p>
                             </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-lg">
-                                <i class="fas fa-chart-line text-3xl text-primary mb-3"></i>
-                                <h3 class="font-semibold text-gray-900">Growth</h3>
-                                <p class="text-sm text-gray-600">Scalable solutions</p>
+                            <div class="mini-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Growth</h3>
+                                <p>Scalable products designed for long-term success.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary-light rounded-2xl transform -rotate-6"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission, Vision, Values -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Foundation</h2>
-                <p class="text-xl text-gray-600">The principles that drive everything we do</p>
+    <section class="foundation-section">
+        <div class="section-wrap">
+            <div class="foundation-header fade-up">
+                <div class="section-tag">Our foundation</div>
+                <h2 class="section-heading">The principles that guide <em>everything</em></h2>
+                <p class="section-sub">From strategy to launch, these values shape how we work and how we support our clients.</p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg text-center service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-bullseye text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Mission</h3>
-                    <p class="text-gray-600">
-                        To empower businesses with innovative digital solutions that drive growth, efficiency, and success in the modern digital landscape.
-                    </p>
+
+            <div class="foundation-grid">
+                <div class="foundation-card fade-up delay-1">
+                    <div class="foundation-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Mission</h3>
+                    <p>To empower businesses with innovative digital solutions that drive growth, efficiency, and success in a fast-changing digital world.</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-lg text-center service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-eye text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Vision</h3>
-                    <p class="text-gray-600">
-                        To be the leading technology partner for businesses worldwide, recognized for our innovation, expertise, and commitment to excellence.
-                    </p>
+
+                <div class="foundation-card fade-up delay-2">
+                    <div class="foundation-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Vision</h3>
+                    <p>To become a trusted technology partner known for modern thinking, technical excellence, and a strong commitment to client success.</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-lg text-center service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-heart text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Values</h3>
-                    <p class="text-gray-600">
-                        Integrity, innovation, collaboration, and continuous learning form the cornerstone of our company culture and client relationships.
-                    </p>
+
+                <div class="foundation-card fade-up delay-3">
+                    <div class="foundation-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Values</h3>
+                    <p>Integrity, innovation, collaboration, and continuous improvement form the foundation of our culture and our relationships.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-                <p class="text-xl text-gray-600">Talented professionals dedicated to your success</p>
+    <section class="team-section">
+        <div class="section-wrap">
+            <div class="team-header fade-up">
+                <div class="section-tag">Our team</div>
+                <h2 class="section-heading">Meet the people behind the <em>work</em></h2>
+                <p class="section-sub">A focused team of designers and developers dedicated to building products that make an impact.</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-32 h-32 bg-gradient-to-br from-primary to-primary-light rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <i class="fas fa-user text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Lead Developer</h3>
-                    <p class="text-primary font-semibold mb-3">Full-Stack Expert</p>
-                    <p class="text-gray-600 mb-4">Specialized in Angular, React, and modern web technologies with 5+ years of experience in enterprise applications.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-github"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
+
+            <div class="team-grid">
+                <div class="team-card fade-up delay-1">
+                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                    <h3>Lead Developer</h3>
+                    <div class="team-role">Full-Stack Expert</div>
+                    <p>Specialized in Angular, React, and modern web technologies, with deep experience building robust and scalable applications.</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                
-                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-32 h-32 bg-gradient-to-br from-primary to-primary-light rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <i class="fas fa-user text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Mobile App Developer</h3>
-                    <p class="text-primary font-semibold mb-3">iOS & Android Specialist</p>
-                    <p class="text-gray-600 mb-4">Expert in React Native and Flutter development, creating seamless cross-platform mobile experiences.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-github"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
+
+                <div class="team-card fade-up delay-2">
+                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                    <h3>Mobile App Developer</h3>
+                    <div class="team-role">iOS & Android Specialist</div>
+                    <p>Expert in React Native and Flutter, delivering smooth, modern cross-platform mobile experiences for growing businesses.</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                
-                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-32 h-32 bg-gradient-to-br from-primary to-primary-light rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <i class="fas fa-user text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">UI/UX Designer</h3>
-                    <p class="text-primary font-semibold mb-3">Creative Design Lead</p>
-                    <p class="text-gray-600 mb-4">Passionate about creating intuitive and beautiful user experiences that drive engagement and conversion.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-dribbble"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-behance"></i></a>
+
+                <div class="team-card fade-up delay-3">
+                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                    <h3>UI/UX Designer</h3>
+                    <div class="team-role">Creative Design Lead</div>
+                    <p>Passionate about designing elegant, intuitive interfaces that improve user experience, engagement, and conversion.</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technologies & Skills -->
-    <section class="py-20 bg-primary text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">Our Expertise</h2>
-                <p class="text-xl text-white/90">Technologies and skills that power our solutions</p>
+    <section class="skills-section">
+        <div class="section-wrap">
+            <div class="skills-header fade-up">
+                <div class="section-tag">Our expertise</div>
+                <h2 class="section-heading">Technologies we use to <em>build</em></h2>
+                <p class="section-sub">A modern stack chosen for performance, flexibility, and long-term maintainability.</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <h3 class="text-xl font-bold mb-4">Frontend</h3>
-                    <div class="space-y-3">
-                        <div class="bg-white/10 rounded-lg p-3">Angular</div>
-                        <div class="bg-white/10 rounded-lg p-3">React</div>
-                        <div class="bg-white/10 rounded-lg p-3">JavaScript</div>
-                        <div class="bg-white/10 rounded-lg p-3">Tailwind CSS</div>
-                        <div class="bg-white/10 rounded-lg p-3">Bootstrap</div>
+
+            <div class="skills-grid">
+                <div class="skill-group fade-up delay-1">
+                    <h3>Frontend</h3>
+                    <div class="skill-list">
+                        <div class="skill-pill">Angular</div>
+                        <div class="skill-pill">React</div>
+                        <div class="skill-pill">JavaScript</div>
+                        <div class="skill-pill">Tailwind CSS</div>
+                        <div class="skill-pill">Bootstrap</div>
                     </div>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <h3 class="text-xl font-bold mb-4">Backend</h3>
-                    <div class="space-y-3">
-                        <div class="bg-white/10 rounded-lg p-3">Node.js</div>
-                        <div class="bg-white/10 rounded-lg p-3">Python</div>
-                        <div class="bg-white/10 rounded-lg p-3">MongoDB</div>
-                        <div class="bg-white/10 rounded-lg p-3">Supabase</div>
-                        <div class="bg-white/10 rounded-lg p-3">Firebase</div>
+
+                <div class="skill-group fade-up delay-2">
+                    <h3>Backend</h3>
+                    <div class="skill-list">
+                        <div class="skill-pill">Node.js</div>
+                        <div class="skill-pill">Python</div>
+                        <div class="skill-pill">MongoDB</div>
+                        <div class="skill-pill">Supabase</div>
+                        <div class="skill-pill">Firebase</div>
                     </div>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
-                    <h3 class="text-xl font-bold mb-4">Mobile</h3>
-                    <div class="space-y-3">
-                        <div class="bg-white/10 rounded-lg p-3">React Native</div>
-                        <div class="bg-white/10 rounded-lg p-3">Flutter</div>
-                        <div class="bg-white/10 rounded-lg p-3">FlutterFlow</div>
-                        <div class="bg-white/10 rounded-lg p-3">iOS</div>
-                        <div class="bg-white/10 rounded-lg p-3">Android</div>
+
+                <div class="skill-group fade-up delay-3">
+                    <h3>Mobile</h3>
+                    <div class="skill-list">
+                        <div class="skill-pill">React Native</div>
+                        <div class="skill-pill">Flutter</div>
+                        <div class="skill-pill">FlutterFlow</div>
+                        <div class="skill-pill">iOS</div>
+                        <div class="skill-pill">Android</div>
                     </div>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
-                    <h3 class="text-xl font-bold mb-4">Tools & Others</h3>
-                    <div class="space-y-3">
-                        <div class="bg-white/10 rounded-lg p-3">Git</div>
-                        <div class="bg-white/10 rounded-lg p-3">Docker</div>
-                        <div class="bg-white/10 rounded-lg p-3">AWS</div>
-                        <div class="bg-white/10 rounded-lg p-3">Figma</div>
-                        <div class="bg-white/10 rounded-lg p-3">Adobe Creative Suite</div>
+
+                <div class="skill-group fade-up delay-4">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-list">
+                        <div class="skill-pill">Git</div>
+                        <div class="skill-pill">Docker</div>
+                        <div class="skill-pill">AWS</div>
+                        <div class="skill-pill">Figma</div>
+                        <div class="skill-pill">Adobe Creative Suite</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ready to Work Together?</h2>
-                <p class="text-xl text-gray-600 mb-8">Let's discuss how we can help bring your vision to life</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105">
-                        Start Your Project
-                    </a>
-                    <a href="portfolio.html" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-semibold transition-all">
-                        View Our Portfolio
-                    </a>
-                </div>
+    <section class="cta-section">
+        <div class="cta-inner fade-up">
+            <h2>Ready to work <em>together?</em></h2>
+            <p>Let’s talk about your goals and how we can help bring your ideas to life with thoughtful design and solid development.</p>
+            <div class="cta-btns">
+                <a href="contact.html" class="btn-primary">
+                    Start your project
+                    <i class="fas fa-arrow-right" style="font-size:0.85rem"></i>
+                </a>
+                <a href="portfolio.html" class="btn-secondary">
+                    View our portfolio
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-               <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-20 h-20 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
-                      
-                    </div>
-                    <p class="text-gray-400 mb-4">Innovative digital solutions for modern businesses.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.85">
+                    <p>Innovative digital solutions for modern businesses — from web and mobile to cloud and beyond.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="services.html" class="hover:text-primary">Web Development</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Mobile Apps</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Cloud Solutions</a></li>
-                        <li><a href="services.html" class="hover:text-primary">UI/UX Design</a></li>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">Cloud Solutions</a></li>
+                        <li><a href="services.html">UI/UX Design</a></li>
+                        <li><a href="services.html">E-Commerce</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="about.html" class="hover:text-primary">About Us</a></li>
-                        <li><a href="portfolio.html" class="hover:text-primary">Portfolio</a></li>
-                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                
-              <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-envelope mr-2"></i>info@xivaera.com</p>
-                        <p><i class="fas fa-phone mr-2"></i>+44 7393062198</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Suite 6837, Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
+
+                <div class="footer-col">
+                    <h4>Get in touch</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@xivaera.com">info@xivaera.com</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+447393062198">+44 7393 062198</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Suite 6837, Unit 3a, 34–35 Hatton Garden, London EC1N 8DX</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Xivaera Technologies. All rights reserved.</p>
+
+            <div class="footer-bottom">
+                <span style="color:rgba(255,255,255,0.25)">&copy; 2025 <span>Xivaera Technologies</span>. All rights reserved.</span>
+                <span>Built with care in London 🇬🇧</span>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>

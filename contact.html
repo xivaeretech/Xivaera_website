@@ -1,581 +1,1015 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Xivaera Technologies</title>
-    <meta name="description"
-        content="Get in touch with Xivaera Technologies. Contact us for web development, mobile apps, and digital solutions. Free consultation available.">
+    <title>Contact Us — Xivaera Technologies</title>
+    <meta name="description" content="Get in touch with Xivaera Technologies. Contact us for web development, mobile apps, and digital solutions. Free consultation available.">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6bb768',
-                        'primary-dark': '#5ba05a',
-                        'primary-light': '#7fc77c'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
+    <style>
+        .hero {
+            padding: 140px 32px 72px;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            color: var(--ink);
+            letter-spacing: -0.03em;
+            max-width: 700px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .hero-sub {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: var(--ink-soft);
+            max-width: 480px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .main-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px 80px;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .form-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.15);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .form-card p {
+            color: var(--ink-soft);
+            margin-bottom: 36px;
+            font-size: 0.95rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-mid);
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 2px solid #e8ede5;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: var(--ink);
+            background: var(--cream);
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            outline: none;
+            appearance: none;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #b0b8ab;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--green);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(107,183,104,0.12);
+        }
+
+        .field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7568' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--ink-soft);
+            margin-top: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .service-chip {
+            padding: 10px 12px;
+            border: 2px solid #e8ede5;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            background: var(--cream);
+            user-select: none;
+        }
+
+        .service-chip:hover {
+            border-color: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        .service-chip.selected {
+            border-color: var(--green);
+            background: var(--green-muted);
+            color: var(--green-dark);
+            font-weight: 600;
+        }
+
+        .field-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .field-label-row label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-mid);
+        }
+
+        .field-label-row span {
+            font-size: 0.75rem;
+            color: var(--ink-soft);
+        }
+
+        .budget-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .budget-chip {
+            padding: 8px 16px;
+            border: 2px solid #e8ede5;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--cream);
+            user-select: none;
+        }
+
+        .budget-chip:hover {
+            border-color: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        .budget-chip.selected {
+            border-color: var(--green);
+            background: var(--green-muted);
+            color: var(--green-dark);
+            font-weight: 600;
+        }
+
+        input[type="hidden"] {
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 14px;
+            font-size: 1rem;
+            margin-top: 8px;
+            letter-spacing: 0.01em;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.15);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: var(--ink);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--green-muted);
+            border: 1px solid rgba(107,183,104,0.25);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--green-dark);
+            font-size: 0.9rem;
+        }
+
+        .contact-item-text h4 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 4px;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            font-size: 0.9rem;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--green);
+        }
+
+        .social-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--cream);
+            border: 1px solid #e2e8de;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink-soft);
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .social-btn:hover {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .map-card {
+            background: var(--ink);
+            border-radius: 20px;
+            padding: 28px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, rgba(107,183,104,0.25) 0%, transparent 70%);
+        }
+
+        .map-card h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .map-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .map-preview {
+            height: 140px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .map-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(107,183,104,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(107,183,104,0.07) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .map-pin {
+            width: 36px;
+            height: 36px;
+            background: var(--green);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: relative;
+            box-shadow: 0 4px 16px rgba(107,183,104,0.5);
+            z-index: 1;
+        }
+
+        .map-pin::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .map-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: white;
+            padding: 11px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .map-link:hover {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .faq-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px 80px;
+        }
+
+        .faq-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .faq-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+        }
+
+        .faq-header p {
+            color: var(--ink-soft);
+            max-width: 300px;
+            text-align: right;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .faq-btn {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            gap: 16px;
+        }
+
+        .faq-btn h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            flex: 1;
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--green-muted);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .faq-item.open .faq-icon {
+            background: var(--green);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s;
+            padding: 0 24px;
+        }
+
+        .faq-body p {
+            padding-bottom: 22px;
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            border-top: 1px solid #eef2eb;
+            padding-top: 16px;
+        }
+
+        .faq-item.open .faq-body {
+            max-height: 300px;
+        }
+
+        .cta-section {
+            background: var(--ink);
+            padding: 80px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(107,183,104,0.15) 0%, transparent 70%);
+        }
+
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-inner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: white;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-inner h2 em {
+            font-style: italic;
+            color: var(--green-light);
+        }
+
+        .cta-inner p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.05rem;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .main-section {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: contents;
+            }
+
+            .info-card {
+                order: 2;
+            }
+
+            .map-card {
+                order: 3;
+            }
+
+            .form-card {
+                order: 1;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .faq-header p {
+                text-align: left;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
-    </script>
+
+        @media (max-width: 540px) {
+            .hero {
+                padding: 120px 20px 48px;
+            }
+
+            .main-section,
+            .faq-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .form-card {
+                padding: 28px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+        }
+    </style>
 </head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html">
+                <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:62px;width:auto;display:block;">
+            </a>
 
-<body class="font-inter bg-white">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <div class="w-40 h-40 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="active nav-cta">Contact</a></li>
+            </ul>
 
-                    </a>
-                </div>
-
-
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-                        <a href="about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
-                        <a href="services.html" class="text-gray-600 hover:text-primary transition-colors">Services</a>
-                        <a href="portfolio.html"
-                            class="text-gray-600 hover:text-primary transition-colors">Portfolio</a>
-                        <a href="contact.html"
-                            class="text-primary font-medium hover:text-primary-dark transition-colors">Contact</a>
-                    </div>
-                </div>
-
-                <div class="hidden md:block">
-                    <a href="contact.html"
-                        class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">
-                        Get Started
-                    </a>
-                </div>
-
-                <div class="md:hidden">
-                    <button class="mobile-menu-btn text-gray-600 hover:text-primary">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
-                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Services</a>
-                <a href="portfolio.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Portfolio</a>
-                <a href="contact.html" class="block px-3 py-2 text-primary font-medium">Contact</a>
-            </div>
+            <button class="mob-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-24 pb-12 bg-gradient-to-br from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center" data-aos="fade-up">
-                <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    Get in <span class="text-primary">Touch</span>
-                </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Ready to transform your business with innovative digital solutions? Let's discuss your project
-                    today.
-                </p>
-            </div>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner fade-up">
+            <div class="hero-tag">Available for new projects</div>
+            <h1>Let's build something <em>great</em> together</h1>
+            <p class="hero-sub">Ready to transform your business with innovative digital solutions? Drop us a message and we'll get back to you within 24 hours.</p>
         </div>
     </section>
 
-    <!-- Contact Form & Info -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16">
-                <!-- Contact Form -->
-                <div data-aos="fade-right">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-                    <p class="text-gray-600 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
+    <section class="main-section">
+        <div class="form-card fade-up">
+            <h2>Send a message</h2>
+            <p>Tell us about your project — we'd love to hear from you.</p>
 
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="relative">
-                                <input type="text" id="firstName" name="firstName" required
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="firstName"
-                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
-                                    First Name *
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input type="text" id="lastName" name="lastName" required
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="lastName"
-                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
-                                    Last Name *
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="relative">
-                                <input type="email" id="email" name="email" required
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="email"
-                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
-                                    Email Address *
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input type="tel" id="phone" name="phone"
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <label for="phone"
-                                    class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
-                                    Phone Number
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="relative">
-                            <input type="text" id="company" name="company"
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <label for="company"
-                                class="absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none">
-                                Company Name
-                            </label>
-                        </div>
-
-                        <div class="relative">
-                            <select id="service" name="service" required
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Select a Service *</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="mobile-apps">Mobile App Development</option>
-                                <option value="cloud-solutions">Cloud Solutions</option>
-                                <option value="ui-ux-design">UI/UX Design</option>
-                                <option value="e-commerce">E-Commerce Development</option>
-                                <option value="consultation">Consultation</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="relative">
-                            <textarea id="message" name="message" rows="6" required
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                                placeholder="Tell us about your project and requirements..."></textarea>
-                        </div>
-
-                        <div class="relative">
-                            <select id="budget" name="budget" required
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Project Budget Range *</option>
-                                <option value="under-10k">Under $10,000</option>
-                                <option value="10k-25k">$10,000 - $25,000</option>
-                                <option value="25k-50k">$25,000 - $50,000</option>
-                                <option value="50k-100k">$50,000 - $100,000</option>
-                                <option value="over-100k">Over $100,000</option>
-                                <option value="not-sure">Not Sure</option>
-                            </select>
-                        </div>
-
-                        <button type="submit"
-                            class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 btn-animated">
-                            Send Message
-                            <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Contact Information -->
-                <div data-aos="fade-left">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
-                    <p class="text-gray-600 mb-8">Reach out to us through any of these channels. We're here to help!</p>
-
-                    <div class="space-y-8">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Office Address</h3>
-                                <p class="text-gray-600">Suite 6837 Unit 3a,<br>34-35, Hatton Garden, <br>London,England, EC1N 8DX</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Phone Numbers</h3>
-                                <p class="text-gray-600">Mobile: +44 (775) 675-7276<br>Mobile: +44 (739) 306-2198</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Email Addresses</h3>
-                                <p class="text-gray-600">General: info.xivaera@gmail.com<br>Support:
-                                    info.xivaera@gmail.com<br>Sales: sales@xivaera.com</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-clock text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Business Hours</h3>
-                                <p class="text-gray-600">Monday - Friday: 10:00 AM - 6:00 PM<br>Saturday: 10:00 AM -
-                                    4:00 PM<br>Sunday: Closed</p>
-                            </div>
-                        </div>
+            <form id="contact-form" novalidate>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="firstName">First Name <span style="color:var(--green)">*</span></label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Alex" required>
+                        <span class="field-error" id="err-firstName">Please enter your first name</span>
                     </div>
-
-                    <!-- Social Media -->
-                    <div class="mt-12">
-                        <h3 class="font-semibold text-gray-900 mb-4">Follow Us</h3>
-                        <div class="flex space-x-4">
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </a>
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
-                                <i class="fab fa-facebook text-xl"></i>
-                            </a>
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
-                                <i class="fab fa-instagram text-xl"></i>
-                            </a>
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
+                    <div class="field">
+                        <label for="lastName">Last Name <span style="color:var(--green)">*</span></label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Johnson" required>
+                        <span class="field-error" id="err-lastName">Please enter your last name</span>
                     </div>
                 </div>
-            </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="email">Email <span style="color:var(--green)">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="alex@company.com" required>
+                        <span class="field-error" id="err-email">Please enter a valid email</span>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+44 7393 062198">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" placeholder="Your company (optional)">
+                </div>
+
+                <div style="margin-bottom:16px">
+                    <div class="field-label-row">
+                        <label>Service Needed <span style="color:var(--green)">*</span></label>
+                        <span id="service-hint">Select one</span>
+                    </div>
+
+                    <div class="services-grid" id="service-chips">
+                        <div class="service-chip" data-value="web-development"><i class="fas fa-code" style="margin-right:5px;font-size:0.75rem"></i>Web Dev</div>
+                        <div class="service-chip" data-value="mobile-apps"><i class="fas fa-mobile-alt" style="margin-right:5px;font-size:0.75rem"></i>Mobile Apps</div>
+                        <div class="service-chip" data-value="cloud-solutions"><i class="fas fa-cloud" style="margin-right:5px;font-size:0.75rem"></i>Cloud</div>
+                        <div class="service-chip" data-value="ui-ux-design"><i class="fas fa-palette" style="margin-right:5px;font-size:0.75rem"></i>UI/UX</div>
+                        <div class="service-chip" data-value="e-commerce"><i class="fas fa-shopping-cart" style="margin-right:5px;font-size:0.75rem"></i>E-Commerce</div>
+                        <div class="service-chip" data-value="consultation"><i class="fas fa-comments" style="margin-right:5px;font-size:0.75rem"></i>Consultation</div>
+                    </div>
+
+                    <input type="hidden" id="service" name="service">
+                    <span class="field-error" id="err-service">Please select a service</span>
+                </div>
+
+                <div style="margin-bottom:16px">
+                    <div class="field-label-row">
+                        <label>Budget Range <span style="color:var(--green)">*</span></label>
+                    </div>
+
+                    <div class="budget-options" id="budget-chips">
+                        <div class="budget-chip" data-value="under-10k">Under $10k</div>
+                        <div class="budget-chip" data-value="10k-25k">$10k–$25k</div>
+                        <div class="budget-chip" data-value="25k-50k">$25k–$50k</div>
+                        <div class="budget-chip" data-value="50k-100k">$50k–$100k</div>
+                        <div class="budget-chip" data-value="over-100k">$100k+</div>
+                        <div class="budget-chip" data-value="not-sure">Not sure yet</div>
+                    </div>
+
+                    <input type="hidden" id="budget" name="budget">
+                    <span class="field-error" id="err-budget">Please select a budget range</span>
+                </div>
+
+                <div class="field">
+                    <label for="message">Project Details <span style="color:var(--green)">*</span></label>
+                    <textarea id="message" name="message" placeholder="Tell us about your project goals, timeline, and any specific requirements..." required maxlength="1000"></textarea>
+                    <div class="char-count"><span id="char-count">0</span>/1000</div>
+                    <span class="field-error" id="err-message">Please describe your project</span>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span id="btn-text">Send Message</span>
+                    <i class="fas fa-arrow-right" id="btn-icon"></i>
+                </button>
+            </form>
         </div>
-    </section>
 
-    <!-- Map Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Find Our Office</h2>
-                <p class="text-gray-600">Visit us at our headquarters at Colchester</p>
-            </div>
+        <div class="sidebar">
+            <div class="info-card fade-up delay-1">
+                <h3>Get in touch</h3>
 
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up">
-                <div class="h-96 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <i class="fas fa-map-marker-alt text-6xl mb-4 opacity-20"></i>
-                        <h3 class="text-2xl font-bold mb-2">Interactive Map</h3>
-                        <p class="text-lg opacity-90">Suite 6837, Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
-                        <div class="mt-6">
-                            <a href="https://www.google.com/maps?ll=51.520032,-0.108125&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=14204225801665394951" target="_blank"
-                                class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-all inline-block">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                Open in Google Maps
-                            </a>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Office</h4>
+                        <p>Suite 6837, Unit 3a<br>34–35 Hatton Garden<br>London, EC1N 8DX</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Phone</h4>
+                        <a href="tel:+447393062198">+44 7393 062198</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Email</h4>
+                        <a href="mailto:info@xivaera.com">info@xivaera.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item" style="margin-bottom:0">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Hours</h4>
+                        <div class="hours-status" id="hours-badge">Loading...</div>
+                        <p>Mon–Fri: 10:00–18:00<br>Saturday: 10:00–16:00<br>Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div style="margin-top:24px;padding-top:20px;border-top:1px solid #eef2eb">
+                    <p style="font-size:0.78rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px">Follow Us</p>
+                    <div class="social-row">
+                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- FAQ Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-                <p class="text-gray-600">Common questions about working with Xivaera Technologies</p>
-            </div>
-
-            <div class="space-y-6">
-                <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">How long does a typical project take?</h3>
-                            <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Project timelines vary depending on complexity and scope. A simple
-                            website typically takes 2-4 weeks, while complex web applications or mobile apps can take
-                            2-6 months. We provide detailed project timelines during our initial consultation.</p>
-                    </div>
+            <div class="map-card fade-up delay-2">
+                <h4>Find our office</h4>
+                <p>Suite 6837, Unit 3a, 34–35 Hatton Garden, London EC1N 8DX</p>
+                <div class="map-preview">
+                    <div class="map-pin"></div>
                 </div>
-
-                <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">What technologies do you specialize in?</h3>
-                            <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">We specialize in modern web technologies including Angular, React,
-                            JavaScript, Node.js, MongoDB, and Supabase. For mobile development, we use React Native,
-                            Flutter, and FlutterFlow. We also work with cloud platforms like AWS,GCP and implement
-                            modern CSS frameworks like Tailwind.</p>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing support and
-                                maintenance?</h3>
-                            <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Yes, we offer comprehensive support and maintenance packages. This
-                            includes regular updates, security patches, performance monitoring, and technical support.
-                            We provide different tiers of support to match your specific needs and budget.</p>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">What is your development process?</h3>
-                            <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Our process includes four main phases: Discovery (understanding your
-                            needs), Planning (creating detailed specifications), Development (building your solution
-                            using agile methodology), and Launch (testing, deployment, and support). We maintain clear
-                            communication throughout each phase.</p>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="500">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">Can you work with existing systems?</h3>
-                            <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-600">Absolutely! We have extensive experience integrating with existing
-                            systems, migrating legacy applications, and enhancing current platforms. We carefully
-                            analyze your existing infrastructure and provide seamless integration solutions.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-primary">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
-                <p class="text-xl text-white/90 mb-8">Let's schedule a free consultation to discuss your project</p>
-                <a href="#contact-form"
-                    class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 inline-block">
-                    Schedule Free Consultation
+                <a href="https://www.google.com/maps?ll=51.520032,-0.108125&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=14204225801665394951" target="_blank" rel="noopener" class="map-link">
+                    <i class="fas fa-external-link-alt" style="font-size:0.8rem"></i>
+                    Open in Google Maps
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-20 h-20 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
+    <section class="faq-section">
+        <div class="faq-header fade-up">
+            <h2>Frequently asked questions</h2>
+            <p>Everything you need to know about working with Xivaera.</p>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-btn">
+                    <h3>How long does a typical project take?</h3>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-body">
+                    <p>Project timelines vary by complexity. A simple website typically takes 2–4 weeks, while complex web applications or mobile apps can take 2–6 months. We provide detailed timelines during our initial consultation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">
+                    <h3>What technologies do you specialise in?</h3>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-body">
+                    <p>We specialise in Angular, React, Node.js, MongoDB, and Supabase for web. For mobile we use React Native and Flutter. Cloud platforms include AWS and GCP, with Tailwind CSS for modern UI.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">
+                    <h3>Do you provide ongoing support and maintenance?</h3>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-body">
+                    <p>Yes — we offer comprehensive support and maintenance packages including updates, security patches, performance monitoring, and technical support across different tiers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">
+                    <h3>What is your development process?</h3>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-body">
+                    <p>Discovery → Planning → Development (agile) → Launch. We maintain clear communication at every phase and keep you involved in key decisions throughout.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">
+                    <h3>Can you integrate with existing systems?</h3>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-body">
+                    <p>Absolutely. We have extensive experience integrating with existing infrastructure, migrating legacy applications, and enhancing current platforms with minimal disruption.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">
+                    <h3>How do I get a free consultation?</h3>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-body">
+                    <p>Simply fill out the contact form above or give us a call. We'll schedule a 30-minute discovery call to understand your needs and outline how we can help — completely free, no obligation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-inner fade-up">
+            <h2>Ready to get <em>started?</em></h2>
+            <p>Schedule a free 30-minute consultation. No pressure, no commitment — just a conversation about your project.</p>
+            <a href="#contact-form" class="btn-primary">
+                Schedule free consultation
+                <i class="fas fa-arrow-right" style="font-size:0.85rem"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.85">
+                    <p>Innovative digital solutions for modern businesses — from web and mobile to cloud and beyond.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">Cloud Solutions</a></li>
+                        <li><a href="services.html">UI/UX Design</a></li>
+                        <li><a href="services.html">E-Commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Get in touch</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@xivaera.com">info@xivaera.com</a>
                         </div>
-
-                    </div>
-                    <p class="text-gray-400 mb-4">Innovative digital solutions for modern businesses.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="services.html" class="hover:text-primary">Web Development</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Mobile Apps</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Cloud Solutions</a></li>
-                        <li><a href="services.html" class="hover:text-primary">UI/UX Design</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="about.html" class="hover:text-primary">About Us</a></li>
-                        <li><a href="portfolio.html" class="hover:text-primary">Portfolio</a></li>
-                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
-                    </ul>
-                </div>
-   <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-envelope mr-2"></i>info@xivaera.com</p>
-                        <p><i class="fas fa-phone mr-2"></i>+44 7393062198</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Suite 6837 Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+447393062198">+44 7393 062198</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Suite 6837, Unit 3a, 34–35 Hatton Garden, London EC1N 8DX</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Xivaera Technologies. All rights reserved.</p>
+            <div class="footer-bottom">
+                <span style="color:rgba(255,255,255,0.25)">&copy; 2025 <span>Xivaera Technologies</span>. All rights reserved.</span>
+                <span>Built with care in London 🇬🇧</span>
             </div>
         </div>
     </footer>
 
-<!-- Custom JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <div class="toast" id="toast">
+        <div class="toast-icon" id="toast-icon"></div>
+        <div class="toast-content">
+            <h4 id="toast-title"></h4>
+            <p id="toast-msg"></p>
+        </div>
+        <button class="toast-close" id="toast-close" aria-label="Close">✕</button>
+    </div>
 
-    <!-- Contact Form & FAQ Script -->
-<script>
-    function toggleFAQ(button) {
-        const content = button.nextElementSibling;
-        const icon = button.querySelector('i');
-        if (content.classList.contains('hidden')) {
-            content.classList.remove('hidden');
-            icon.style.transform = 'rotate(180deg)';
-        } else {
-            content.classList.add('hidden');
-            icon.style.transform = 'rotate(0deg)';
-        }
-    }
+    <script>
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
 
-    document.getElementById('contact-form').addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-
-        const requiredFields = ['firstName', 'lastName', 'email', 'service', 'message', 'budget'];
-        let isValid = true;
-        requiredFields.forEach(field => {
-            const input = document.getElementById(field);
-            if (!data[field] || data[field].trim() === '') {
-                input.classList.add('border-red-500');
-                isValid = false;
-            } else {
-                input.classList.remove('border-red-500');
-            }
-        });
-
-        if (!isValid) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-        submitBtn.disabled = true;
-
-        try {
-            const response = await fetch('https://formspree.io/f/xgorldbv', { 
-                method: 'POST',
-                headers: { 
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: data.email,
-                    name: data.firstName + ' ' + data.lastName,
-                    phone: data.phone,
-                    company: data.company,
-                    service: data.service,
-                    message: data.message,
-                    budget: data.budget
-                })
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
             });
-
-            if (response.ok) {
-                this.reset();
-                showToast(true);
-            } else {
-                const json = await response.json();
-                const errorMsg = json.errors ? json.errors.map(e => e.message).join(', ') : 'Submission failed.';
-                showToast(false, errorMsg);
-            }
-        } catch (error) {
-            showToast(false, 'Network error. Please try again.');
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-
-    function showToast(success, errorMsg = '') {
-        const toast = document.createElement('div');
-        toast.className = `fixed top-4 right-4 ${success ? 'bg-primary' : 'bg-red-500'} text-white p-6 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
-        toast.innerHTML = `
-            <div class="flex items-center">
-                <i class="fas ${success ? 'fa-check-circle' : 'fa-exclamation-circle'} mr-3 text-2xl"></i>
-                <div>
-                    <h4 class="font-semibold">${success ? 'Message Sent Successfully!' : 'Something went wrong'}</h4>
-                    <p class="text-sm opacity-90">${success ? "We'll get back to you within 24 hours." : errorMsg}</p>
-                </div>
-                <button class="ml-4 text-white hover:text-gray-200" onclick="this.parentElement.parentElement.remove()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        `;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.style.transform = 'translateX(0)', 100);
-        setTimeout(() => {
-            toast.style.transform = 'translateX(100%)';
-            setTimeout(() => toast.remove(), 300);
-        }, 5000);
-    }
-</script>
-
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

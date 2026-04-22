@@ -3,228 +3,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Xivaera Technologies</title>
-    <meta name="description" content="Explore our comprehensive services including web development, mobile apps, cloud solutions, and more using cutting-edge technologies.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Font Awesome -->
+    <title>Services — Xivaera Technologies</title>
+    <meta name="description" content="Explore Xivaera Technologies services including web development, mobile apps, cloud solutions, UI/UX, e-commerce, and ongoing support.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6bb768',
-                        'primary-dark': '#5ba05a',
-                        'primary-light': '#7fc77c'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
+
+    <style>
+        .hero {
+            padding: 140px 32px 80px;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.05;
+            color: var(--ink);
+            letter-spacing: -0.03em;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .hero-sub {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .services-main {
+            padding: 20px 0 100px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 20px;
+            padding: 36px 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--green-light));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(107,183,104,0.25);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--green-muted);
+            border: 1px solid rgba(107,183,104,0.25);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--green);
+            color: white;
+            border-color: var(--green);
+        }
+
+        .service-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--ink);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .service-card > p {
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: var(--ink-mid);
+            line-height: 1.6;
+        }
+
+        .feature-item i {
+            color: var(--green-dark);
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        .service-stack {
+            padding-top: 20px;
+            border-top: 1px solid #eef2eb;
+        }
+
+        .service-stack h4 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 12px;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill {
+            background: var(--green-muted);
+            color: var(--green-dark);
+            border: 1px solid rgba(107,183,104,0.2);
+            padding: 8px 12px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .additional-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-head-center {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-head-center .section-sub {
+            margin: 0 auto;
+        }
+
+        .additional-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .mini-service {
+            background: var(--cream);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 18px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .mini-service:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .mini-service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--green-muted);
+            border: 1px solid rgba(107,183,104,0.25);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            font-size: 1.1rem;
+            margin: 0 auto 18px;
+        }
+
+        .mini-service h3 {
+            font-size: 1.05rem;
+            color: var(--ink);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .mini-service p {
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        .process-section {
+            padding: 100px 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 56px;
+        }
+
+        .process-card {
+            background: var(--white);
+            border: 1px solid rgba(107,183,104,0.12);
+            border-radius: 20px;
+            padding: 30px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .process-step {
+            width: 74px;
+            height: 74px;
+            margin: 0 auto 20px;
+            background: var(--green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--green-light);
+        }
+
+        .process-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            line-height: 1.75;
+        }
+
+        .tech-section {
+            background: var(--ink);
+            padding: 100px 0;
+        }
+
+        .tech-section .section-heading {
+            color: white;
+        }
+
+        .tech-section .section-sub {
+            color: rgba(255,255,255,0.5);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tech-section .section-tag {
+            background: rgba(107,183,104,0.15);
+            border-color: rgba(107,183,104,0.3);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 12px;
+            margin-top: 48px;
+        }
+
+        .tech-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 24px 12px;
+            text-align: center;
+            transition: all 0.25s;
+        }
+
+        .tech-card:hover {
+            background: var(--green-muted);
+            border-color: rgba(107,183,104,0.3);
+            transform: translateY(-4px);
+        }
+
+        .tech-card i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+            color: white;
+        }
+
+        .tech-card p {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .tech-card:hover p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .cta-section {
+            background: var(--cream);
+            padding: 100px 32px;
+        }
+
+        .cta-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-inner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-inner h2 em {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .cta-inner p {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            margin-bottom: 36px;
+            line-height: 1.75;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .additional-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
-    </script>
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .services-grid,
+            .additional-grid,
+            .process-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+        }
+    </style>
 </head>
-<body class="font-inter bg-white">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <div class="w-40 h-40 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
-                      
-                    </a>
-                </div>
-                
-                
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-                        <a href="about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
-                        <a href="services.html" class="text-primary font-medium hover:text-primary-dark transition-colors">Services</a>
-                        <a href="portfolio.html" class="text-gray-600 hover:text-primary transition-colors">Portfolio</a>
-                        <a href="contact.html" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
-                    </div>
-                </div>
-                
-                <div class="hidden md:block">
-                    <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">
-                        Get Started
-                    </a>
-                </div>
-                
-                <div class="md:hidden">
-                    <button class="mobile-menu-btn text-gray-600 hover:text-primary">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
-                <a href="services.html" class="block px-3 py-2 text-primary font-medium">Services</a>
-                <a href="portfolio.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Portfolio</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
-            </div>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html">
+                <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:62px;width:auto;display:block;">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+
+            <button class="mob-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-24 pb-12 bg-gradient-to-br from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center" data-aos="fade-up">
-                <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    Our <span class="text-primary">Services</span>
-                </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Comprehensive digital solutions tailored to your business needs
-                </p>
-            </div>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner fade-up">
+            <div class="hero-tag">What we do</div>
+            <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5rem);line-height:1.05;color:var(--ink);letter-spacing:-0.03em;margin-bottom:22px;">Services designed for <em style="font-style:italic;color:var(--green);">growth</em></h1>
+            <p class="hero-sub">From websites and mobile apps to cloud infrastructure and ongoing support, we build digital solutions that are modern, scalable, and tailored to your goals.</p>
         </div>
     </section>
 
-    <!-- Main Services -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Web Development -->
-                <div class="bg-gray-50 p-8 rounded-2xl hover:shadow-xl transition-all service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-white text-2xl"></i>
+    <section class="services-main">
+        <div class="section-wrap">
+            <div class="services-grid">
+                <div class="service-card fade-up delay-1">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern frameworks, thoughtful UX, and strong technical foundations.</p>
+                    <div class="feature-list">
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Responsive, accessible layouts</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Angular and React development</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Performance optimization</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>SEO-friendly structure</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Web Development</h3>
-                    <p class="text-gray-600 mb-6">Custom websites and web applications built with modern frameworks and best practices.</p>
-                    
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Responsive Design</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Modern Frameworks (Angular, React)</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Performance Optimization</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>SEO Optimization</span>
-                        </div>
-                    </div>
-                    
-                    <div class="border-t pt-6">
-                        <h4 class="font-semibold text-gray-900 mb-2">Technologies:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">HTML5</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">CSS3</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Angular</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">React</span>
+                    <div class="service-stack">
+                        <h4>Technologies</h4>
+                        <div class="pill-row">
+                            <span class="pill">HTML5</span>
+                            <span class="pill">CSS3</span>
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">Angular</span>
+                            <span class="pill">React</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mobile Development -->
-                <div class="bg-gray-50 p-8 rounded-2xl hover:shadow-xl transition-all service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                <div class="service-card fade-up delay-2">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native-feeling mobile experiences for iOS and Android, built with modern cross-platform tools and smooth performance in mind.</p>
+                    <div class="feature-list">
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Cross-platform development</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>High-performance user experience</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>App Store and Play Store deployment</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Push notifications and integrations</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Mobile App Development</h3>
-                    <p class="text-gray-600 mb-6">Native and cross-platform mobile applications for iOS and Android devices.</p>
-                    
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Cross-Platform Development</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Native Performance</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>App Store Deployment</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Push Notifications</span>
-                        </div>
-                    </div>
-                    
-                    <div class="border-t pt-6">
-                        <h4 class="font-semibold text-gray-900 mb-2">Technologies:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">React Native</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Flutter</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">FlutterFlow</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">iOS</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Android</span>
+                    <div class="service-stack">
+                        <h4>Technologies</h4>
+                        <div class="pill-row">
+                            <span class="pill">React Native</span>
+                            <span class="pill">Flutter</span>
+                            <span class="pill">FlutterFlow</span>
+                            <span class="pill">iOS</span>
+                            <span class="pill">Android</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cloud Solutions -->
-                <div class="bg-gray-50 p-8 rounded-2xl hover:shadow-xl transition-all service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-cloud text-white text-2xl"></i>
+                <div class="service-card fade-up delay-3">
+                    <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable infrastructure, modern databases, and secure backends that help your product perform reliably as your business grows.</p>
+                    <div class="feature-list">
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Database architecture and management</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>API design and backend logic</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Cloud hosting and deployment</span></div>
+                        <div class="feature-item"><i class="fas fa-check"></i><span>Security, backup, and reliability</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Cloud Solutions</h3>
-                    <p class="text-gray-600 mb-6">Scalable cloud-based solutions with modern databases and infrastructure.</p>
-                    
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Database Management</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>API Development</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Cloud Hosting</span>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Security & Backup</span>
-                        </div>
-                    </div>
-                    
-                    <div class="border-t pt-6">
-                        <h4 class="font-semibold text-gray-900 mb-2">Technologies:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">MongoDB</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Supabase</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Firebase</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">AWS</span>
-                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Node.js</span>
+                    <div class="service-stack">
+                        <h4>Technologies</h4>
+                        <div class="pill-row">
+                            <span class="pill">MongoDB</span>
+                            <span class="pill">Supabase</span>
+                            <span class="pill">Firebase</span>
+                            <span class="pill">AWS</span>
+                            <span class="pill">Node.js</span>
                         </div>
                     </div>
                 </div>
@@ -232,240 +544,199 @@
         </div>
     </section>
 
-    <!-- Additional Services -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Additional Services</h2>
-                <p class="text-xl text-gray-600">Complete solutions for your digital transformation</p>
+    <section class="additional-section">
+        <div class="section-wrap">
+            <div class="section-head-center fade-up">
+                <div class="section-tag">Additional services</div>
+                <h2 class="section-heading">Support beyond the <em>build</em></h2>
+                <p class="section-sub">We help with the surrounding pieces too, so your product is launch-ready, polished, and easy to grow.</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-paint-brush text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">UI/UX Design</h3>
-                    <p class="text-gray-600 text-sm">Beautiful and intuitive user interfaces that enhance user experience</p>
+
+            <div class="additional-grid">
+                <div class="mini-service fade-up delay-1">
+                    <div class="mini-service-icon"><i class="fas fa-palette"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful and intuitive interfaces designed to improve usability, trust, and conversion.</p>
                 </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shopping-cart text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">E-Commerce</h3>
-                    <p class="text-gray-600 text-sm">Complete online stores with payment integration and inventory management</p>
+
+                <div class="mini-service fade-up delay-2">
+                    <div class="mini-service-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>E-Commerce</h3>
+                    <p>Online stores with custom features, payments, inventory flows, and a strong conversion focus.</p>
                 </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-chart-bar text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Analytics & SEO</h3>
-                    <p class="text-gray-600 text-sm">Data-driven insights and search engine optimization for better visibility</p>
+
+                <div class="mini-service fade-up delay-3">
+                    <div class="mini-service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Analytics & SEO</h3>
+                    <p>Data-driven improvements and search optimization to help your business grow more effectively.</p>
                 </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-tools text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Maintenance</h3>
-                    <p class="text-gray-600 text-sm">Ongoing support and maintenance to keep your applications running smoothly</p>
+
+                <div class="mini-service fade-up delay-4">
+                    <div class="mini-service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Maintenance</h3>
+                    <p>Ongoing support, updates, and monitoring to keep your site or app secure and running smoothly.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Development Process</h2>
-                <p class="text-xl text-gray-600">A systematic approach to deliver exceptional results</p>
+    <section class="process-section">
+        <div class="section-wrap">
+            <div class="section-head-center fade-up">
+                <div class="section-tag">Our process</div>
+                <h2 class="section-heading">How we bring ideas to <em>life</em></h2>
+                <p class="section-sub">A practical, collaborative workflow that keeps projects clear, efficient, and focused on results.</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
-                        <span class="text-white font-bold text-2xl">1</span>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary-light rounded-full"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Discovery</h3>
-                    <p class="text-gray-600">Understanding your business needs, goals, and requirements through detailed consultation.</p>
+
+            <div class="process-grid">
+                <div class="process-card fade-up delay-1">
+                    <div class="process-step">1</div>
+                    <h3>Discovery</h3>
+                    <p>We understand your goals, users, priorities, and business context through focused discussions and planning.</p>
                 </div>
-                
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
-                        <span class="text-white font-bold text-2xl">2</span>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary-light rounded-full"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Planning</h3>
-                    <p class="text-gray-600">Creating detailed project roadmaps, wireframes, and technical specifications.</p>
+
+                <div class="process-card fade-up delay-2">
+                    <div class="process-step">2</div>
+                    <h3>Planning</h3>
+                    <p>We define the roadmap, architecture, and user experience so the project moves forward with clarity.</p>
                 </div>
-                
-                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
-                        <span class="text-white font-bold text-2xl">3</span>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary-light rounded-full"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Development</h3>
-                    <p class="text-gray-600">Building your solution using best practices, modern technologies, and agile methodology.</p>
+
+                <div class="process-card fade-up delay-3">
+                    <div class="process-step">3</div>
+                    <h3>Development</h3>
+                    <p>We build your solution using modern technologies, strong development practices, and regular progress reviews.</p>
                 </div>
-                
-                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
-                        <span class="text-white font-bold text-2xl">4</span>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary-light rounded-full"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Launch</h3>
-                    <p class="text-gray-600">Testing, deployment, and ongoing support to ensure your success.</p>
+
+                <div class="process-card fade-up delay-4">
+                    <div class="process-step">4</div>
+                    <h3>Launch</h3>
+                    <p>We test, deploy, and support the final product so it goes live smoothly and performs with confidence.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technology Stack -->
-    <section class="py-20 bg-primary">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-white mb-4">Technology Stack</h2>
-                <p class="text-xl text-white/90">Modern tools and frameworks we use to build exceptional solutions</p>
+    <section class="tech-section">
+        <div class="section-wrap">
+            <div class="fade-up" style="text-align:center">
+                <div class="section-tag">Technology stack</div>
+                <h2 class="section-heading" style="color:white;text-align:center">Tools we use to <em>build</em></h2>
+                <p class="section-sub">A modern stack selected for performance, flexibility, and maintainability.</p>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fab fa-angular text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">Angular</p>
-                    </div>
+
+            <div class="tech-grid">
+                <div class="tech-card fade-up delay-1">
+                    <i class="fab fa-angular" style="color:#e23237"></i>
+                    <p>Angular</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fab fa-react text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">React</p>
-                    </div>
+                <div class="tech-card fade-up delay-2">
+                    <i class="fab fa-react" style="color:#61dafb"></i>
+                    <p>React</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fab fa-js-square text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">JavaScript</p>
-                    </div>
+                <div class="tech-card fade-up delay-1">
+                    <i class="fab fa-js-square" style="color:#f7df1e"></i>
+                    <p>JavaScript</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fas fa-database text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">MongoDB</p>
-                    </div>
+                <div class="tech-card fade-up delay-2">
+                    <i class="fas fa-database" style="color:#4db33d"></i>
+                    <p>MongoDB</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fas fa-server text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">Supabase</p>
-                    </div>
+                <div class="tech-card fade-up delay-1">
+                    <i class="fas fa-server" style="color:#3ecf8e"></i>
+                    <p>Supabase</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fab fa-css3-alt text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">CSS</p>
-                    </div>
+                <div class="tech-card fade-up delay-2">
+                    <i class="fab fa-css3-alt" style="color:#2965f1"></i>
+                    <p>CSS</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="700">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fas fa-mobile-alt text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">Flutter</p>
-                    </div>
+                <div class="tech-card fade-up delay-1">
+                    <i class="fas fa-mobile-alt" style="color:#54c5f8"></i>
+                    <p>Flutter</p>
                 </div>
-                
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="800">
-                    <div class="bg-white/10 hover:bg-white/20 p-6 rounded-xl transition-all duration-300 transform hover:scale-110">
-                        <i class="fab fa-bootstrap text-4xl text-white mb-3"></i>
-                        <p class="text-white font-medium">Tailwind</p>
-                    </div>
+                <div class="tech-card fade-up delay-2">
+                    <i class="fab fa-bootstrap" style="color:#38bdf8"></i>
+                    <p>Tailwind</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ready to Start Your Project?</h2>
-                <p class="text-xl text-gray-600 mb-8">Let's discuss how we can bring your vision to life</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105">
-                        Get Free Quote
-                    </a>
-                    <a href="portfolio.html" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-semibold transition-all">
-                        View Our Work
-                    </a>
-                </div>
+    <section class="cta-section">
+        <div class="cta-inner fade-up">
+            <h2>Ready to start your <em>project?</em></h2>
+            <p>Let’s talk about your goals and find the right combination of strategy, design, and development for your business.</p>
+            <div class="cta-btns">
+                <a href="contact.html" class="btn-primary">
+                    Get free quote
+                    <i class="fas fa-arrow-right" style="font-size:0.85rem"></i>
+                </a>
+                <a href="portfolio.html" class="btn-secondary">
+                    View our work
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                 <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-20 h-20 rounded-lg flex items-center justify-center">
-                            <img src="./assets/img/logo.png" alt="logo">
-                        </div>
-                      
-                    </div>
-                    <p class="text-gray-400 mb-4">Innovative digital solutions for modern businesses.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Xivaera Technologies" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.85">
+                    <p>Innovative digital solutions for modern businesses — from web and mobile to cloud and beyond.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="services.html" class="hover:text-primary">Web Development</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Mobile Apps</a></li>
-                        <li><a href="services.html" class="hover:text-primary">Cloud Solutions</a></li>
-                        <li><a href="services.html" class="hover:text-primary">UI/UX Design</a></li>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">Cloud Solutions</a></li>
+                        <li><a href="services.html">UI/UX Design</a></li>
+                        <li><a href="services.html">E-Commerce</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="about.html" class="hover:text-primary">About Us</a></li>
-                        <li><a href="portfolio.html" class="hover:text-primary">Portfolio</a></li>
-                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                
-          <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-envelope mr-2"></i>info@xivaera.com</p>
-                        <p><i class="fas fa-phone mr-2"></i>+44 7393062198</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Suite 6837, Unit 3a, 34-35, Hatton Garden, Holborn, London,England, EC1N 8DX</p>
+
+                <div class="footer-col">
+                    <h4>Get in touch</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@xivaera.com">info@xivaera.com</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+447393062198">+44 7393 062198</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Suite 6837, Unit 3a, 34–35 Hatton Garden, London EC1N 8DX</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Xivaera Technologies. All rights reserved.</p>
+
+            <div class="footer-bottom">
+                <span style="color:rgba(255,255,255,0.25)">&copy; 2025 <span>Xivaera Technologies</span>. All rights reserved.</span>
+                <span>Built with care in London 🇬🇧</span>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
